@@ -1,38 +1,39 @@
 {
-  "name": "angular13-skeleton",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/animations": "~13.2.0",
-    "@angular/cdk": "^13.2.0",
-    "@angular/common": "~13.2.0",
-    "@angular/compiler": "~13.2.0",
-    "@angular/core": "~13.2.0",
-    "@angular/forms": "~13.2.0",
-    "@angular/material": "^13.2.0",
-    "@angular/platform-browser": "~13.2.0",
-    "@angular/platform-browser-dynamic": "~13.2.0",
-    "@angular/router": "~13.2.0",
-    "rxjs": "~7.5.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
-  },
-  "devDependencies": {
-    "@angular-builders/jest": "latest",
-    "@angular-devkit/build-angular": "~13.2.0",
-    "@angular/cli": "~13.2.0",
-    "@angular/compiler-cli": "~13.2.0",
-    "@briebug/jest-schematic": "^4.0.0",
-    "@types/jest": "latest",
-     "@types/node": "^12.11.1",
-    "jest": "latest",
-          "typescript": "~4.5.2"
-  }
+	"name": "angular13-ngrx-jest",
+	"version": "0.0.0",
+	"scripts": {
+		"ng": "ng",
+		"start": "ng serve",
+		"build": "ng build",
+		"watch": "ng build --watch --configuration development",
+		"test": "ng test"
+	},
+	"private": true,
+	"dependencies": {
+		"@angular/animations": "~13.2.0",
+		"@angular/cdk": "^13.2.0",
+		"@angular/common": "~13.2.0",
+		"@angular/compiler": "~13.2.0",
+		"@angular/core": "~13.2.0",
+		"@angular/forms": "~13.2.0",
+		"@angular/material": "^13.2.0",
+		"@angular/platform-browser": "~13.2.0",
+		"@angular/platform-browser-dynamic": "~13.2.0",
+		"@angular/router": "~13.2.0",
+		"ngx-infinite-scroll": "^10.0.1",
+		"rxjs": "~7.5.0",
+		"tslib": "^2.3.0",
+		"zone.js": "~0.11.4"
+	},
+	"devDependencies": {
+		"@angular-builders/jest": "latest",
+		"@angular-devkit/build-angular": "~13.2.0",
+		"@angular/cli": "~13.2.0",
+		"@angular/compiler-cli": "~13.2.0",
+		"@briebug/jest-schematic": "^4.0.0",
+		"@types/jest": "latest",
+		"@types/node": "^12.11.1",
+		"jest": "latest",
+		"typescript": "~4.5.2"
+	}
 }

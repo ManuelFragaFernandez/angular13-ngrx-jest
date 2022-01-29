@@ -1,0 +1,25 @@
+.card__component{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__container{
+    // display: flex;
+    // background-color: red;
+    // border: solid 5px red;
+    // height: 10%;
+    // width: 33%;
+    // align-items: center;
+    // justify-content: center;
+
+    mat-card{
+      // display: flex;
+      // background-color: red;
+      // border: solid 5px red;
+      // height: 10%;
+      // width: 100%;
+      // align-items: center;
+      // justify-content: center;
+    }
+  }
+}
