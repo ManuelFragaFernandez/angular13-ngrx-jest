@@ -1,0 +1,11 @@
+<!-- <ng-container *ngFor="let make of makesList; let i = index">
+	<app-card [info]="makesList[i]"></app-card>
+</ng-container> -->
+<input type="text" />
+<ul class="makes__list">
+  <li class="makes__card" *ngFor="let make of makesList; let i = index">
+    <div class="makes__card-container">
+      <app-card [info]="makesList[i]"></app-card>
+    </div>
+  </li>
+</ul>

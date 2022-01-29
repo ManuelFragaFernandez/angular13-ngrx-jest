@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiUrl: 'https://reqres.in/api'
+	production: false,
+	apiUrl: 'https://vpic.nhtsa.dot.gov/api/vehicles',
 };
 
 /*
