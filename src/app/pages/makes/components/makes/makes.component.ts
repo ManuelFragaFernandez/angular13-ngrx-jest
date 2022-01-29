@@ -1,8 +1,8 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { filter, map, take, tap } from 'rxjs';
-import { getAllMakesFactory, getAllMakesHandler } from './interfaces/handlers/getAllMakesFactory';
-import { makes } from './interfaces/makes';
-import { MakesService } from './services/makes.service';
+import { getAllMakesFactory } from '../../interfaces/handlers/getAllMakesFactory';
+import { make } from '../../interfaces/make';
+import { MakesService } from '../../services/makes.service';
 
 type makeObject = {};
 
@@ -17,7 +17,7 @@ export class MakesComponent implements OnInit {
   // makesList!: makeObject;
 
   totalResults: number = 0;
-  makesList: makes[] = [];
+  makesList: make[] = [];
 
   constructor(private makesService: MakesService) {}
 

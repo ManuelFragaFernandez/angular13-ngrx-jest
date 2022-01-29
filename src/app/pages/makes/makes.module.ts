@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VehicleTypesComponent } from './vehicle-types/vehicle-types.component';
-import { ModelsComponent } from './models/models.component';
+import { VehicleTypesComponent } from './components/vehicle-types/vehicle-types.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MakesComponent } from './makes.component';
 import { MakesRoutingModule } from './makes-routing.module';
+import { MakesComponent } from './components/makes/makes.component';
+import { ModelsComponent } from './components/models/models.component';
 
 @NgModule({
-	declarations: [MakesComponent, VehicleTypesComponent, ModelsComponent],
-	imports: [MakesRoutingModule, CommonModule, SharedModule],
+  declarations: [MakesComponent, VehicleTypesComponent, ModelsComponent],
+  imports: [MakesRoutingModule, CommonModule, SharedModule],
 })
 export class MakesModule {}
