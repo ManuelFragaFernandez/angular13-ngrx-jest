@@ -1,11 +1,17 @@
-<!-- <ng-container *ngFor="let make of makesList; let i = index">
-	<app-card [info]="makesList[i]"></app-card>
-</ng-container> -->
-<input type="text" />
-<ul class="makes__list">
-  <li class="makes__card" *ngFor="let make of makesList; let i = index">
-    <div class="makes__card-container">
-      <app-card [info]="makesList[i]"></app-card>
-    </div>
-  </li>
-</ul>
+<div class="makes__search__container"></div>
+<input class="makes__search__container__input" type="text" />
+<div
+  class="makes__scroll-container"
+  infiniteScroll
+  [infiniteScrollDistance]="5"
+  [fromRoot]="true"
+  [infiniteScrollContainer]="'.makes__scroll-container'"
+  (scrolled)="onScroll()">
+  <ul class="makes__scroll-container__list">
+    <li class="makes__scroll-container__list__card" *ngFor="let make of makesList; let i = index">
+      <div class="makes__scroll-container__list__card-container">
+        <app-card [data]="makesList[i]"></app-card>
+      </div>
+    </li>
+  </ul>
+</div>
