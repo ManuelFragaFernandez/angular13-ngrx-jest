@@ -3,9 +3,6 @@ import { filter, map, take, tap } from 'rxjs';
 import { getAllMakesFactory } from '../../interfaces/handlers/getAllMakesFactory';
 import { make } from '../../interfaces/make';
 import { MakesService } from '../../services/makes.service';
-
-type makeObject = {};
-
 @Component({
   selector: 'app-makes',
   templateUrl: './makes.component.html',
@@ -13,30 +10,38 @@ type makeObject = {};
 })
 export class MakesComponent implements OnInit {
   @HostBinding('class.makes') makes: boolean = true;
-  // arrayPrueba = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  // makesList!: makeObject;
 
   totalResults: number = 0;
   makesList: make[] = [];
+  page: number = 0;
+  makesPerPage: number = 100;
 
   constructor(private makesService: MakesService) {}
 
   ngOnInit(): void {
+    this.getMakes();
+  }
+
+  onScroll() {
+    console.log('scroll');
+    this.getMakes();
+  }
+
+  getMakes() {
     this.makesService
       .getAllMakes()
       .pipe(
         map((makesHandler) => new getAllMakesFactory(makesHandler)),
-        take(100)
+        tap((getAllMakesResponse) => (this.totalResults = getAllMakesResponse.count)),
+        map(({ results }) => {
+          const firstItem = this.page * this.makesPerPage;
+          const lastItem = (this.page + 1) * this.makesPerPage;
+          return results.slice(firstItem, lastItem);
+        })
       )
       .subscribe((makesResult) => {
-        this.totalResults = makesResult.count;
-        this.makesList = makesResult.results.slice(0, 99);
-
-        console.log(this.makesList);
+        this.makesList = this.makesList.concat(makesResult);
+        this.page++;
       });
   }
 }
-
-// searchByName(){
-
-// }

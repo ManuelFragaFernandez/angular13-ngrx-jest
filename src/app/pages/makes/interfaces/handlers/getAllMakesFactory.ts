@@ -7,7 +7,7 @@ export interface getAllMakesHandler {
 
 export class getAllMakesFactory {
   public count: number = 0;
-  public results: make[] = [];
+  public results: make[];
 
   constructor({ Count, Results }: getAllMakesHandler) {
     this.count = Count;
