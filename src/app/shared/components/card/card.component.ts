@@ -15,13 +15,13 @@ export interface cardInfo {
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @HostBinding('card__component') card__component = true;
+  @HostBinding('class.card') card = true;
 
   @Input() data!: cardInfo;
 
   constructor() {}
 
   ngOnInit(): void {
-    // console.log(this.data);
+    console.log(this.data);
   }
 }

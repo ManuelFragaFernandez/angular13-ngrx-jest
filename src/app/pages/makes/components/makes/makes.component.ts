@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { filter, map, take, tap } from 'rxjs';
-import { getAllMakesFactory } from '../../interfaces/handlers/getAllMakesFactory';
+import { GetAllMakesFactory } from '../../interfaces/handlers/getAllMakesFactory';
 import { make } from '../../interfaces/make';
 import { MakesService } from '../../services/makes.service';
 @Component({
@@ -23,7 +23,6 @@ export class MakesComponent implements OnInit {
   }
 
   onScroll() {
-    console.log('scroll');
     this.getMakes();
   }
 
@@ -31,8 +30,11 @@ export class MakesComponent implements OnInit {
     this.makesService
       .getAllMakes()
       .pipe(
-        map((makesHandler) => new getAllMakesFactory(makesHandler)),
-        tap((getAllMakesResponse) => (this.totalResults = getAllMakesResponse.count)),
+        map((makesHandler) => new GetAllMakesFactory(makesHandler)),
+        tap((getAllMakesResponse) => {
+          this.totalResults = getAllMakesResponse.count;
+          console.log(getAllMakesResponse);
+        }),
         map(({ results }) => {
           const firstItem = this.page * this.makesPerPage;
           const lastItem = (this.page + 1) * this.makesPerPage;
