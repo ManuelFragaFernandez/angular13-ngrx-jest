@@ -1,5 +1,10 @@
 <div class="makes__search__container"></div>
-<input class="makes__search__container__input" type="text" />
+<input
+  class="makes__search__container__input"
+  type="text"
+  [(ngModel)]="searchValue"
+  lyricsOnly
+  (input)="getMakesFiltered()" />
 <div
   class="makes__scroll-container"
   infiniteScroll
@@ -8,9 +13,9 @@
   [infiniteScrollContainer]="'.makes__scroll-container'"
   (scrolled)="onScroll()">
   <ul class="makes__scroll-container__list">
-    <li class="makes__scroll-container__list__card" *ngFor="let make of makesList; let i = index">
+    <li class="makes__scroll-container__list__card" *ngFor="let make of currentMakes">
       <div class="makes__scroll-container__list__card-container">
-        <app-card [data]="makesList[i]"></app-card>
+        <app-card [data]="make"></app-card>
       </div>
     </li>
   </ul>

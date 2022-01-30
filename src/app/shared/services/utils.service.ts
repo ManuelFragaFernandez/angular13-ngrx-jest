@@ -2,17 +2,23 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UtilsService {
-
-  constructor(private readonly _snackBar: MatSnackBar) { }
+  constructor(private readonly _snackBar: MatSnackBar) {}
 
   openSnackBar(error: string) {
     this._snackBar.open(error, 'Cerrar', {
       horizontalPosition: 'right',
-      verticalPosition: 'top'
+      verticalPosition: 'top',
     });
   }
 
+  formatStringNoSpace(text: string) {
+    return text
+      ?.replace(/ /g, '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLocaleLowerCase();
+  }
 }
