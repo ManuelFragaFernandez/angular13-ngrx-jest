@@ -16,15 +16,49 @@ export class MakesComponent implements OnInit {
   makesList: make[] = [];
   page: number = 0;
   makesPerPage: number = 100;
-  searchValue: string = '';
+  searchValue!: string;
 
   currentMakes: make[] = [];
+  currentMakesFiltered: make[] = [];
 
   constructor(private makesService: MakesService, private utilsService: UtilsService) {}
 
   ngOnInit(): void {
     this.getMakes();
     this.page++;
+  }
+
+  getMakesFiltered() {
+    let formattedSearch = this.utilsService.formatStringNoSpace(this.searchValue);
+    console.log(formattedSearch);
+
+    this.currentMakes = [];
+
+    if (formattedSearch.length >= 1) {
+      this.makesService
+        .getAllMakes()
+        .pipe(
+          map((makesHandler) => new GetAllMakesFactory(makesHandler)),
+          tap((getAllMakesResponse) => {
+            this.totalResults = getAllMakesResponse.count;
+          }),
+          map(({ results }) => {
+            const firstMake = this.page * this.makesPerPage;
+            const lastMake = (this.page + 1) * this.makesPerPage;
+            return results
+              .filter(({ makeName }) =>
+                this.utilsService.formatStringNoSpace(makeName).includes(formattedSearch)
+              )
+              .slice(firstMake, lastMake);
+          })
+        )
+        .subscribe((makesResult) => {
+          this.currentMakesFiltered = this.currentMakesFiltered.concat(makesResult);
+          this.currentMakes = this.currentMakesFiltered;
+        });
+    } else {
+      this.getMakes();
+    }
   }
 
   getMakes() {
@@ -36,9 +70,9 @@ export class MakesComponent implements OnInit {
           this.totalResults = getAllMakesResponse.count;
         }),
         map(({ results }) => {
-          const firstItem = this.page * this.makesPerPage;
-          const lastItem = (this.page + 1) * this.makesPerPage;
-          return results.slice(firstItem, lastItem);
+          const firstMake = this.page * this.makesPerPage;
+          const lastMake = (this.page + 1) * this.makesPerPage;
+          return results.slice(firstMake, lastMake);
         })
       )
       .subscribe((makesResult) => {
@@ -47,18 +81,13 @@ export class MakesComponent implements OnInit {
       });
   }
 
-  getMakesFiltered() {
-    let formattedSearch = this.utilsService.formatStringNoSpace(this.searchValue);
-
-    if (formattedSearch.length >= 1) {
-      this.currentMakes = this.makesList.filter(({ makeName }) =>
-        this.utilsService.formatStringNoSpace(makeName).includes(formattedSearch)
-      );
-    }
+  onScroll() {
+    this.getMakesFiltered();
+    this.page++;
   }
 
-  onScroll() {
-    this.getMakes();
-    this.page++;
+  clearFilteredMakes() {
+    this.currentMakesFiltered = [];
+    this.getMakesFiltered();
   }
 }

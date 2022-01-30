@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title>{{ data.makeName }}</mat-card-title>
+  <mat-card-title>{{ cardName }}</mat-card-title>
   <div *ngIf="data.makeName" class="card__actions">
     <div *ngFor="let button of buttonsInfo" class="card__actions__button">
       <div *ngIf="button.route">

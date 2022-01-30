@@ -5,14 +5,9 @@ import { ModelsComponent } from './components/models/models.component';
 import { VehicleTypesComponent } from './components/vehicle-types/vehicle-types.component';
 
 const makesRoutes: Routes = [
-  {
-    path: '',
-    component: MakesComponent,
-    children: [
-      { path: 'models', component: ModelsComponent },
-      { path: 'vehicle-types', component: VehicleTypesComponent },
-    ],
-  },
+  { path: '', component: MakesComponent },
+  { path: 'models', component: ModelsComponent },
+  { path: 'vehicle-types', component: VehicleTypesComponent },
 ];
 
 @NgModule({

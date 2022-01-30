@@ -4,7 +4,8 @@
     type="text"
     [(ngModel)]="searchValue"
     lyricsOnly
-    (input)="getMakesFiltered()" />
+    (keyup)="getMakesFiltered()"
+    (keydown)="clearFilteredMakes()" />
 </div>
 
 <app-card-list [cards]="currentMakes" (onScroll)="onScroll()"></app-card-list>

@@ -14,10 +14,19 @@ export class CardComponent implements OnInit {
   @Input() data!: cardInfo;
   @Input() buttonsInfo: buttonCardInfo[] = [];
 
+  public cardName: string = '';
+
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // console.log(this.data);
+    for (const property in this.data) {
+      if (property !== 'makeId') {
+        this.cardName = (this.data as any)[property];
+        // this.cardName = this.data[property].toString();
+        // this.cardName = this.data.map(value => value[property])
+        // console.log(this.cardName);
+      }
+    }
   }
 
   navigate(url: string) {
