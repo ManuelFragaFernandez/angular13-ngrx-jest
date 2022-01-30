@@ -1,4 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
+import { buttonCardInfo } from '../card/interfaces/buttonsInfo';
 import { cardInfo } from '../card/interfaces/cardInfo';
 
 @Component({
@@ -12,9 +13,22 @@ export class CardListComponent implements OnInit {
   @Input() cards: cardInfo[] = [];
   @Output() onScroll: EventEmitter<boolean> = new EventEmitter();
 
+  public cardButtons: buttonCardInfo[] = [
+    {
+      buttonName: 'Modelos',
+      route: 'models',
+    },
+    {
+      buttonName: 'Tipos de vehículos',
+      route: 'vehicle-types',
+    },
+  ];
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.cards.forEach((cardInfo) => {});
+  }
 
   emitScroll() {
     this.onScroll.next(true);

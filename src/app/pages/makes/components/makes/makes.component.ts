@@ -19,8 +19,6 @@ export class MakesComponent implements OnInit {
   searchValue: string = '';
 
   currentMakes: make[] = [];
-  //Usado debido a tener que filtrar la búsqueda en front
-  currentTotalResults: number = 0;
 
   constructor(private makesService: MakesService, private utilsService: UtilsService) {}
 
@@ -36,7 +34,6 @@ export class MakesComponent implements OnInit {
         map((makesHandler) => new GetAllMakesFactory(makesHandler)),
         tap((getAllMakesResponse) => {
           this.totalResults = getAllMakesResponse.count;
-          this.currentTotalResults = this.totalResults;
         }),
         map(({ results }) => {
           const firstItem = this.page * this.makesPerPage;
@@ -57,8 +54,6 @@ export class MakesComponent implements OnInit {
       this.currentMakes = this.makesList.filter(({ makeName }) =>
         this.utilsService.formatStringNoSpace(makeName).includes(formattedSearch)
       );
-      this.currentTotalResults =
-        this.searchValue !== '' ? this.currentMakes.length : this.totalResults;
     }
   }
 
