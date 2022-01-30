@@ -1,9 +1,11 @@
-<div class="makes__search__container"></div>
-<input
-  class="makes__search__container__input"
-  type="text"
-  [(ngModel)]="searchValue"
-  lyricsOnly
-  (input)="getMakesFiltered()" />
+<div class="makes__search__container">
+  <div>Total resultados: {{ currentTotalResults }}</div>
+  <input
+    class="makes__search__container__input"
+    type="text"
+    [(ngModel)]="searchValue"
+    lyricsOnly
+    (input)="getMakesFiltered()" />
+</div>
 
 <app-card-list [cards]="currentMakes" (onScroll)="onScroll()"></app-card-list>

@@ -8,7 +8,7 @@ export class LyricsOnlyDirective {
 
   @HostListener('input', ['$event'])
   onInputChange(event: Event): void {
-    const lyricsOnly = /[^a-zA-Z]*/g;
+    const lyricsOnly = /[^a-zA-Z(" ")]*/g;
     const initValue = this.elRef.nativeElement.value;
 
     this.elRef.nativeElement.value = initValue.replace(lyricsOnly, '');
