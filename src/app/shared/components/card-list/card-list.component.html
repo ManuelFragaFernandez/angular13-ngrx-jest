@@ -1,0 +1,15 @@
+<div
+  class="card__list__scroll-container"
+  infiniteScroll
+  [infiniteScrollDistance]="5"
+  [fromRoot]="true"
+  [infiniteScrollContainer]="'.card__list__scroll-container'"
+  (scrolled)="emitScroll()">
+  <ul class="card__list__scroll-container__list">
+    <li class="card__list__scroll-container__list__card" *ngFor="let card of cards">
+      <div class="card__list__scroll-container__list__card-container">
+        <app-card [data]="card"></app-card>
+      </div>
+    </li>
+  </ul>
+</div>

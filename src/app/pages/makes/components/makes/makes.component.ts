@@ -52,15 +52,10 @@ export class MakesComponent implements OnInit {
   }
 
   getMakesFiltered() {
-    console.log(this.makesList);
-    console.log(this.currentMakes);
-
     this.currentMakes = this.makesList.filter(({ makeName }) =>
       this.utilsService
         .formatStringNoSpace(makeName)
         .includes(this.utilsService.formatStringNoSpace(this.searchValue))
     );
-    console.log(this.makesList);
-    console.log(this.currentMakes);
   }
 }
