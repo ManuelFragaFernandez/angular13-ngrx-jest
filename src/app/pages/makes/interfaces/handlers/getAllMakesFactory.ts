@@ -1,16 +1,22 @@
 import { make } from '../make';
+import { MakesFactory } from './makesFactory';
+
+export interface makeHandler {
+  Make_ID: number;
+  Make_Name: string;
+}
 
 export interface getAllMakesHandler {
   Count: number;
-  Results: make[];
+  Results: makeHandler[];
 }
 
-export class getAllMakesFactory {
-  public count: number = 0;
-  public results: make[];
+export class GetAllMakesFactory {
+  public count: number;
+  public results: make[] = [];
 
   constructor({ Count, Results }: getAllMakesHandler) {
     this.count = Count;
-    this.results = Results;
+    this.results = Results.map((make) => new MakesFactory(make));
   }
 }
