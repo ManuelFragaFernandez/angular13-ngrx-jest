@@ -1,4 +1,6 @@
 .card__list {
+  display: block;
+
   &__scroll-container {
     overflow-y: scroll;
     width: 100%;

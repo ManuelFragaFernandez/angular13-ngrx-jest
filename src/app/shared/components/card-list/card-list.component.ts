@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { cardInfo } from '../card/card.component';
+import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
+import { cardInfo } from '../card/interfaces/cardInfo';
 
 @Component({
   selector: 'app-card-list',
@@ -7,6 +7,8 @@ import { cardInfo } from '../card/card.component';
   styleUrls: ['./card-list.component.scss'],
 })
 export class CardListComponent implements OnInit {
+  @HostBinding('class.card__list') cardList = true;
+
   @Input() cards: cardInfo[] = [];
   @Output() onScroll: EventEmitter<boolean> = new EventEmitter();
 
