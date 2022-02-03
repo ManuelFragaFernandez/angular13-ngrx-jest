@@ -9,6 +9,9 @@ import { cardInfo } from '../card/interfaces/cardInfo';
 })
 export class CardListComponent implements OnInit {
   @HostBinding('class.card__list') cardList = true;
+  // @HostBinding('class.card__list') get hostclass() {
+  //   return 'true';
+  // }
 
   @Input() cards: cardInfo[] = [];
   @Output() onScroll: EventEmitter<boolean> = new EventEmitter();

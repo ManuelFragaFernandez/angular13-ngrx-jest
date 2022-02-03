@@ -1,28 +1,9 @@
-.card {
-  display: block;
+mat-card {
+  width: 100%;
+}
 
-  // &.__actions {
-  //   display: flex;
-  //   justify-content: space-between;
-  // }
-
-  // &__container{
-  // display: flex;
-  // background-color: red;
-  // border: solid 5px red;
-  // height: 10%;
-  // width: 33%;
-  // align-items: center;
-  // justify-content: center;
-
-  // mat-card{
-  // display: flex;
-  // background-color: red;
-  // border: solid 5px red;
-  // height: 10%;
-  // width: 100%;
-  // align-items: center;
-  // justify-content: center;
-  // }
-  // }
+.card__actions {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
 }

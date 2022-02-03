@@ -16,7 +16,7 @@ export class MakesComponent implements OnInit {
   makesList: make[] = [];
   page: number = 0;
   makesPerPage: number = 100;
-  searchValue!: string;
+  searchValue: string = '';
 
   currentMakes: make[] = [];
   currentMakesFiltered: make[] = [];
@@ -30,18 +30,14 @@ export class MakesComponent implements OnInit {
 
   getMakesFiltered() {
     let formattedSearch = this.utilsService.formatStringNoSpace(this.searchValue);
-    console.log(formattedSearch);
-
-    this.currentMakes = [];
 
     if (formattedSearch.length >= 1) {
+      this.currentMakes = [];
+
       this.makesService
         .getAllMakes()
         .pipe(
           map((makesHandler) => new GetAllMakesFactory(makesHandler)),
-          tap((getAllMakesResponse) => {
-            this.totalResults = getAllMakesResponse.count;
-          }),
           map(({ results }) => {
             const firstMake = this.page * this.makesPerPage;
             const lastMake = (this.page + 1) * this.makesPerPage;
@@ -57,6 +53,7 @@ export class MakesComponent implements OnInit {
           this.currentMakes = this.currentMakesFiltered;
         });
     } else {
+      this.currentMakesFiltered = [];
       this.getMakes();
     }
   }
@@ -66,9 +63,6 @@ export class MakesComponent implements OnInit {
       .getAllMakes()
       .pipe(
         map((makesHandler) => new GetAllMakesFactory(makesHandler)),
-        tap((getAllMakesResponse) => {
-          this.totalResults = getAllMakesResponse.count;
-        }),
         map(({ results }) => {
           const firstMake = this.page * this.makesPerPage;
           const lastMake = (this.page + 1) * this.makesPerPage;

@@ -1,11 +1,14 @@
 <div class="makes__search__container">
-  <input
-    class="makes__search__container__input"
-    type="text"
-    [(ngModel)]="searchValue"
-    lyricsOnly
-    (keyup)="getMakesFiltered()"
-    (keydown)="clearFilteredMakes()" />
+  <mat-form-field appearance="fill">
+    <mat-label>Busca una marca</mat-label>
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="searchValue"
+      lyricsOnly
+      (keyup)="getMakesFiltered()"
+      (keydown)="clearFilteredMakes()" />
+  </mat-form-field>
 </div>
 
 <app-card-list [cards]="currentMakes" (onScroll)="onScroll()"></app-card-list>

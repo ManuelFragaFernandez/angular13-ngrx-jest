@@ -9,8 +9,6 @@ import { cardInfo } from './interfaces/cardInfo';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @HostBinding('class.card') card = true;
-
   @Input() data!: cardInfo;
   @Input() buttonsInfo: buttonCardInfo[] = [];
 

@@ -9,9 +9,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CardListComponent } from './components/card-list/card-list.component';
+import { MatInputModule } from '@angular/material/input';
+
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-const MATERIAL_MODULES = [MatSnackBarModule, MatButtonModule, MatCardModule];
+const MATERIAL_MODULES = [MatSnackBarModule, MatButtonModule, MatCardModule, MatInputModule];
 
 @NgModule({
   declarations: [HeaderComponent, CardComponent, CardListComponent],

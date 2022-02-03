@@ -8,9 +8,17 @@ import { ModelsComponent } from './components/models/models.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FormsModule } from '@angular/forms';
 import { LyricsOnlyDirective } from './components/directives/lyrics-only.directive';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [MakesComponent, VehicleTypesComponent, ModelsComponent, LyricsOnlyDirective],
-  imports: [MakesRoutingModule, CommonModule, SharedModule, InfiniteScrollModule, FormsModule],
+  imports: [
+    MakesRoutingModule,
+    CommonModule,
+    SharedModule,
+    InfiniteScrollModule,
+    FormsModule,
+    MatInputModule,
+  ],
 })
 export class MakesModule {}
